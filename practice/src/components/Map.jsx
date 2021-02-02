@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Search from "./Search";
 import { GoogleMap, Marker } from "react-google-maps";
-import { center } from "../data/constants";
+import { center, defaultZoom } from "../data/constants";
 
 const Map = () => {
   const markers = useSelector((state) => state.mapReducer.loadMarker);
@@ -13,7 +13,7 @@ const Map = () => {
     mapRef.current = map;
   }, []);
 
-  let dynamicZoom = 9
+  let dynamicZoom = defaultZoom
   let dynamicCenter = center
 
   if(markers.length) {
