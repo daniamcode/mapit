@@ -16,7 +16,7 @@ const Map = () => {
   let dynamicZoom = defaultZoom
   let dynamicCenter = center
 
-  if(markers.length) {
+  if(markers?.length) {
     dynamicZoom = 14
     dynamicCenter = markers[markers.length - 1]
   }
@@ -25,7 +25,7 @@ const Map = () => {
     <section className="googleMap">
       <Search />
       <GoogleMap zoom={dynamicZoom} center={dynamicCenter} onLoad={onMapLoad}>
-        {markers.map((marker) => (
+        {markers?.map((marker) => (
           <Marker
             key={marker}
             position={{ lat: marker.lat, lng: marker.lng }}
