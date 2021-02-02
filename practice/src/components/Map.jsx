@@ -13,15 +13,18 @@ const Map = () => {
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({ lat, lng }) => {
-    mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
-  }, []);
+  let dynamicZoom = 9
+  let dynamicCenter = center
+
+  if(markers.length) {
+    dynamicZoom = 14
+    dynamicCenter = markers[markers.length - 1]
+  }
 
   return (
     <section className="googleMap">
-      <Search panTo={panTo} />
-      <GoogleMap defaultZoom={9} defaultCenter={center} onLoad={onMapLoad}>
+      <Search />
+      <GoogleMap zoom={dynamicZoom} center={dynamicCenter} onLoad={onMapLoad}>
         {markers.map((marker) => (
           <Marker
             key={marker}

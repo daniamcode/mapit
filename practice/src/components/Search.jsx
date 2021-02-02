@@ -15,7 +15,7 @@ import "../styles/Search.css";
 import { loadMarker } from "../redux/actions/mapActions";
 import { useDispatch } from "react-redux";
 
-const Search = ({ panTo }) => {
+const Search = () => {
   let dispatch = useDispatch();
   const {
     ready,
@@ -36,7 +36,6 @@ const Search = ({ panTo }) => {
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
-      //   panTo({ lat, lng });
       dispatch(loadMarker(lat, lng));
     } catch (error) {
       console.log("There's an error");
