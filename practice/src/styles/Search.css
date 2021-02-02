@@ -18,3 +18,9 @@
 .pac-matched {
     font-weight: normal;
 }
+
+@media screen and (min-width: 800px) {
+    .search {
+        width: 40vw;
+    }
+}
